@@ -78,7 +78,7 @@ body {
 }
 
 #lose-screen img {
-  background-image: url(./imagenes/Loser.gif);
+  background-image: url("./imagenes/Loser.gif");
 }
 #lose-screen img,
 #win-screen img {
