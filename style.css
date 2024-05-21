@@ -1,0 +1,117 @@
+
+body {
+    background-image: url(./imagenes/baKC.png);
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background-repeat: no-repeat;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.relative {
+    position: relative;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    width: 60vw;
+    height: 60vh;
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    padding: 50px;
+    box-sizing: border-box;
+    padding-bottom: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(0, 2, 5);
+    border: 5px solid #ff96ff;
+}
+
+.lost {
+    background-color: red;
+}
+
+.Winner {
+    background-color: green;
+}
+
+#win-screen,
+#lose-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    z-index: 20;
+    position: absolute;
+}
+
+#win-screen {
+    background-image: url("./imagenes/Winner.gif");
+}
+
+
+
+#lose-screen img,
+#win-screen img {
+    max-width: 50%;
+    height: 50%;
+    background-size: cover;
+    
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 36px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #ff96ff;
+}
+
+#start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 200px;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url("./imagenes/Portada1.gif");
+    background-position: center;
+    background-size: cover;
+    z-index: 20;
+    position: absolute;
+    background-color: #ff96ff;
+}
+
+#end {
+    display: none;
+}
