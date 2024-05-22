@@ -29,7 +29,7 @@ function fillTablero() {
 
     // Crear el div para mostrar los intentos
     let attempsDiv = document.createElement('div');
-    attempsDiv.innerHTML = `<h3>Número de intentos: ${attemps} / ${maxAttempts}</h3>`;
+    attempsDiv.innerHTML = `<h1>Número de intentos: ${attemps} / ${maxAttempts}</h1>`;
 
     // Añadir el tablero y el div de intentos al contenedor
     container.appendChild(tablero);
@@ -77,6 +77,12 @@ function handleEndGame(winner) {
 
 // Comparar el número seleccionado con el número secreto
 function testNum(item, attempsDiv) {
+    if (item.classList.contains('selected')) {
+        return; // No hacer nada si la celda ya fue seleccionada
+    }
+
+    item.classList.add('selected'); // Marcar la celda como seleccionada
+
     if (actualChoosed === secretNumber) {
         // Si el número es correcto
         attemps = 0; // Reiniciar el contador de intentos
@@ -86,7 +92,7 @@ function testNum(item, attempsDiv) {
         // Si el número es incorrecto
         item.classList.add("lost"); // Marcar la celda como incorrecta
         attemps++; // Incrementar el contador de intentos
-        attempsDiv.innerHTML = `<h3>Número de intentos: ${attemps} / ${maxAttempts}</h3>`;
+        attempsDiv.innerHTML = `<h1>Número de intentos: ${attemps} / ${maxAttempts}</h1>`;
         if (attemps >= maxAttempts) {
             handleEndGame(false); // Manejar el fin del juego como derrota si se alcanzan los intentos máximos
         }
@@ -102,10 +108,10 @@ function startGame() {
     let startScreen = document.createElement("div");
     startScreen.setAttribute("id", "start");
     startScreen.innerHTML = `
-        <h3>Selecciona el nivel de dificultad:</h3>
+        <h1>Selecciona el nivel de dificultad:</h1>
         <select id="difficulty" class="btn">
-            <option value="low">Baja</option>
-            <option value="high">Alta</option>
+            <option value="low">Fácil</option>
+            <option value="high">Difícil</option>
         </select>
         <button id="btnStart" class="btn">START</button>
     `;
