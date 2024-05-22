@@ -46,9 +46,9 @@ function getRandomInt() {
 // Manejar el final del juego
 function handleEndGame(winner) {
     let endScreen = document.createElement("div");
-    endScreen.setAttribute("id", winner ? "win-screen" : "lose-screen"); // Cambiado a win-screen y lose-screen
+    endScreen.setAttribute("id", "end-screen");
+    endScreen.classList.add(winner ? "win" : "lose");
     endScreen.innerHTML = `
-        <img src="${winner ? 'path/to/winner-image.png' : './imagenes/perder.png'}" alt="${winner ? '' : ''}">
         <button id="restart" class="btn">RESTART</button>
     `;
     container.innerHTML = '';
@@ -84,7 +84,7 @@ function startGame() {
     let startScreen = document.createElement("div");
     startScreen.setAttribute("id", "start");
     startScreen.innerHTML = `
-     <h3>Selecciona el nivel de dificultad : </h3>
+        <h3>Selecciona el nivel de dificultad:</h3>
         <select id="difficulty" class="btn">
             <option value="low">Baja</option>
             <option value="high">Alta</option>
