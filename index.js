@@ -4,7 +4,7 @@ let actualChoosed; // Número actualmente seleccionado
 let attemps = 0; // Contador de intentos
 let secretNumber; // Número secreto que el jugador debe adivinar
 let maxAttempts; // Número máximo de intentos permitidos
-let randomMessage = ['Lo estas haciendo bien ', 'Ya casi']; // Mensajes aleatorios para alentar al jugador
+let randomMessage = ['Lo estas haciendo bien ', 'Ya casi']; // Mensajes aleatorios para alentar al jugador (no se muestran)
 let body = document.querySelector('body'); // Selección del elemento body
 let container = document.getElementById('container'); // Selección del contenedor principal
 
@@ -12,7 +12,7 @@ let container = document.getElementById('container'); // Selección del contened
 function fillTablero() {
     // Obtener un número secreto aleatorio
     secretNumber = getRandomInt();
-    console.log(secretNumber); // Imprimir el número secreto en la consola para depuración
+    console.log(secretNumber); // Imprimir el número secreto en la consola 
 
     // Crear el tablero
     let tablero = document.createElement('div');
