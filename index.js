@@ -1,21 +1,24 @@
 // Variables globales
-let numberOfCells = 30;
-let actualChoosed;
-let attemps = 0;
-let secretNumber;
-let maxAttempts;
-let randomMessage = ['Lo estas haciendo bien ', 'Ya casi'];
-let body = document.querySelector('body');
-let container = document.getElementById('container');
+let numberOfCells = 30; // Número de celdas en la cuadrícula
+let actualChoosed; // Número actualmente seleccionado
+let attemps = 0; // Contador de intentos
+let secretNumber; // Número secreto que el jugador debe adivinar
+let maxAttempts; // Número máximo de intentos permitidos
+let randomMessage = ['Lo estas haciendo bien ', 'Ya casi']; // Mensajes aleatorios para alentar al jugador
+let body = document.querySelector('body'); // Selección del elemento body
+let container = document.getElementById('container'); // Selección del contenedor principal
 
 // Crear la cuadrícula
 function fillTablero() {
+    // Obtener un número secreto aleatorio
     secretNumber = getRandomInt();
-    console.log(secretNumber);
+    console.log(secretNumber); // Imprimir el número secreto en la consola para depuración
 
+    // Crear el tablero
     let tablero = document.createElement('div');
     tablero.setAttribute('id', 'tablero');
 
+    // Crear las celdas numeradas
     for (let i = 1; i <= numberOfCells; i++) {
         let cell = document.createElement('div');
         cell.setAttribute('id', i);
@@ -24,54 +27,63 @@ function fillTablero() {
         tablero.appendChild(cell);
     }
 
+    // Crear el div para mostrar los intentos
     let attempsDiv = document.createElement('div');
     attempsDiv.innerHTML = `<h3>Número de intentos: ${attemps} / ${maxAttempts}</h3>`;
 
+    // Añadir el tablero y el div de intentos al contenedor
     container.appendChild(tablero);
     container.appendChild(attempsDiv);
 
+    // Añadir evento de clic a cada celda
     document.querySelectorAll('.number').forEach((celdas, i) => {
         celdas.addEventListener('click', function () {
             actualChoosed = i + 1;
-            testNum(celdas, attempsDiv);
+            testNum(celdas, attempsDiv); // Comprobar el número seleccionado
         });
     });
 }
 
-// Obtener un número aleatorio
+// Obtener un número aleatorio entre 1 y 30
 function getRandomInt() {
     return Math.ceil(Math.random() * 30);
 }
 
 // Manejar el final del juego
 function handleEndGame(winner) {
+    // Crear la pantalla de fin de juego
     let endScreen = document.createElement("div");
     endScreen.setAttribute("id", "end-screen");
-    endScreen.classList.add(winner ? "win" : "lose");
+    endScreen.classList.add(winner ? "win" : "lose"); // Añadir clase 'win' o 'lose' según el resultado
     endScreen.innerHTML = `
         <button id="restart" class="btn">RESTART</button>
     `;
+
+    // Limpiar el contenedor y mostrar la pantalla de fin de juego
     container.innerHTML = '';
     body.appendChild(endScreen);
 
+    // Añadir evento de clic al botón de reinicio
     document.getElementById('restart').addEventListener('click', function () {
         body.removeChild(endScreen);
-        startGame();
+        startGame(); // Reiniciar el juego
     });
 }
 
 // Comparar el número seleccionado con el número secreto
 function testNum(item, attempsDiv) {
     if (actualChoosed === secretNumber) {
-        attemps = 0;
-        item.classList.add('Winner');
-        handleEndGame(true); // true indica que el jugador ha ganado
+        // Si el número es correcto
+        attemps = 0; // Reiniciar el contador de intentos
+        item.classList.add('Winner'); // Marcar la celda ganadora
+        handleEndGame(true); // Manejar el fin del juego como victoria
     } else {
-        item.classList.add("lost");
-        attemps++;
+        // Si el número es incorrecto
+        item.classList.add("lost"); // Marcar la celda como incorrecta
+        attemps++; // Incrementar el contador de intentos
         attempsDiv.innerHTML = `<h3>Número de intentos: ${attemps} / ${maxAttempts}</h3>`;
         if (attemps >= maxAttempts) {
-            handleEndGame(false); // false indica que el jugador ha perdido
+            handleEndGame(false); // Manejar el fin del juego como derrota si se alcanzan los intentos máximos
         }
     }
 }
@@ -81,6 +93,7 @@ function startGame() {
     // Reiniciar el contador de intentos
     attemps = 0;
 
+    // Crear la pantalla de inicio
     let startScreen = document.createElement("div");
     startScreen.setAttribute("id", "start");
     startScreen.innerHTML = `
@@ -91,16 +104,20 @@ function startGame() {
         </select>
         <button id="btnStart" class="btn">START</button>
     `;
+
+    // Añadir la pantalla de inicio al body
     body.appendChild(startScreen);
 
+    // Añadir evento de clic al botón de inicio
     document.getElementById('btnStart').addEventListener('click', function () {
         let difficulty = document.getElementById('difficulty').value;
-        maxAttempts = difficulty === 'low' ? 15 : 5;
-        body.removeChild(startScreen);
-        fillTablero();
+        maxAttempts = difficulty === 'low' ? 15 : 5; // Establecer el número máximo de intentos según la dificultad
+        body.removeChild(startScreen); // Quitar la pantalla de inicio
+        fillTablero(); // Llenar el tablero
     });
 }
 
+// Iniciar el juego al cargar la página
 window.onload = function () {
     startGame();
 }

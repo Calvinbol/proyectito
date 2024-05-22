@@ -1,5 +1,6 @@
+/* Estilo para el body */
 body {
-  background-image: url(./imagenes/baKC.png);
+  background-image: url(./imagenes/baKC.png); /* Imagen de fondo */
   background-position: center;
   display: flex;
   justify-content: center;
@@ -12,10 +13,12 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Posición relativa */
 .relative {
   position: relative;
 }
 
+/* Estilo para el contenedor principal */
 #container {
   display: flex;
   flex-direction: column;
@@ -27,6 +30,7 @@ body {
   height: 60vh;
 }
 
+/* Estilo para el tablero */
 #tablero {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -41,6 +45,7 @@ body {
   height: 100%;
 }
 
+/* Estilo para las celdas numeradas */
 .number {
   display: flex;
   justify-content: center;
@@ -51,14 +56,17 @@ body {
   border: 5px solid #ff96ff;
 }
 
+/* Estilo para las celdas incorrectas */
 .lost {
   background-color: red;
 }
 
+/* Estilo para la celda ganadora */
 .Winner {
   background-color: green;
 }
 
+/* Estilo para la pantalla de fin de juego */
 #end-screen {
   display: flex;
   flex-direction: column;
@@ -72,20 +80,23 @@ body {
   position: absolute;
 }
 
+/* Estilo para la pantalla de victoria */
 #end-screen.win {
   background-image: url("./imagenes/Winner.gif");
 }
 
+/* Estilo para la pantalla de derrota */
 #end-screen.lose {
   background-image: url("./imagenes/Loser.gif");
-  
 }
 
+/* Estilo para el botón de reinicio en la pantalla de fin de juego */
 #end-screen .btn {
   position: absolute;
   bottom: 20px;
 }
 
+/* Estilo general para los botones */
 .btn {
   padding: 10px 20px;
   font-size: 15px;
@@ -95,6 +106,7 @@ body {
   background-color: #ff96ff;
 }
 
+/* Estilo para la pantalla de inicio */
 #start {
   display: flex;
   flex-direction: column;
@@ -108,8 +120,4 @@ body {
   z-index: 20;
   position: absolute;
   background-color: #ff96ff;
-}
-
-#end {
-  display: none;
 }
