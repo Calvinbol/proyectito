@@ -35,10 +35,15 @@ function fillTablero() {
     container.appendChild(tablero);
     container.appendChild(attempsDiv);
 
+    // Obtener el elemento de audio
+    const sonidoClic = document.getElementById("sonido-clic");
+
     // Añadir evento de clic a cada celda
     document.querySelectorAll('.number').forEach((celdas, i) => {
         celdas.addEventListener('click', function () {
             actualChoosed = i + 1;
+            sonidoClic.currentTime = 0; // Reiniciar el audio al inicio
+            sonidoClic.play(); // Reproducir el sonido de clic
             testNum(celdas, attempsDiv); // Comprobar el número seleccionado
         });
     });
