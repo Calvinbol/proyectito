@@ -108,7 +108,7 @@ function startGame() {
     let startScreen = document.createElement("div");
     startScreen.setAttribute("id", "start");
     startScreen.innerHTML = `
-        <h1>Selecciona el nivel de dificultad:</h1>
+        <h2>Selecciona el nivel de dificultad:</h2>
         <select id="difficulty" class="btn">
             <option value="low">Fácil</option>
             <option value="high">Difícil</option>

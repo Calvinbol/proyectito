@@ -1,6 +1,6 @@
 /* Estilo para el body */
 body {
-  background-image: url(./imagenes/baKC.png); /* Imagen de fondo */
+  background-image: url(./imagenes/baKC.png);/* Imagen de fondo */
   background-position: center;
   display: flex;
   justify-content: center;
@@ -54,6 +54,7 @@ body {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: rgb(0, 2, 5);
   border: 5px solid #ff96ff;
+  cursor: pointer;
 }
 
 /* Estilo para las celdas incorrectas */
@@ -98,11 +99,11 @@ body {
 
 /* Estilo general para los botones */
 .btn {
-  padding: 10px 20px;
-  font-size: 15px;
+  padding: 10px 200px;
+  font-size: 40px;
   margin-top: 10px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #ff96ff;
 }
 
@@ -120,4 +121,8 @@ body {
   z-index: 20;
   position: absolute;
   background-color: #ff96ff;
+}
+
+#btnStart, #restart{
+margin-bottom: 10px;
 }
